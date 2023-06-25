@@ -1,0 +1,41 @@
+.contact {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact h3 {
+  margin: 0 0 0.5rem;
+  color: black;
+  letter-spacing: 0.1rem;
+}
+
+.contact .phone {
+  display: flex;
+  align-items: center;
+  color: var(--color-secundary);
+}
+
+.contact .phone svg {
+  margin-right: 0.5rem;
+}
+
+.contact .trash {
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-danger);
+  border-radius: 4px;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+
+.contact .trash svg {
+  font-size: 1.2rem;
+  color: var(--color-neutral);
+}

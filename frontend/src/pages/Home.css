@@ -1,0 +1,134 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 4rem 3rem;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  font-size: 3rem;
+  color: var(--color-primary);
+}
+
+h1 svg {
+  margin-right: 1rem;
+  transform: rotateY(-180deg);
+  font-size: 3rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.header strong {
+  font-size: 2rem;
+}
+
+.header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  font-size: 1rem;
+  color: white;
+  background: var(--color-info);
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-weight: bold;
+}
+
+.header button svg {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.search svg {
+  position: absolute;
+  left: 0.75rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+.search input {
+  width: 100%;
+  height: 2rem;
+  border-radius: 4px;
+  color: var(--color-primary);
+  border: 1px solid var(--color-secundary);
+  background: white;
+  padding-left: 2.5rem;
+  font-weight: bold;
+  outline: 0;
+}
+
+.search input::placeholder {
+  color: var(--color-secundary);
+}
+
+.list {
+  width: 100%;
+}
+
+.list .contact-item {
+  width: 100%;
+  height: 6rem;
+  border: 1px solid var(--color-secundary);
+  border-bottom: 0;
+  padding: 1rem;
+}
+
+.list .contact-item:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.list .contact-item:last-child {
+  border-bottom: 1px solid var(--color-secundary);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  h1, h1 svg {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home {
+    padding: 1rem 2rem 3rem;
+  }
+
+  h1, h1 svg {
+    font-size: 1.5rem;
+  }
+
+  .header strong {
+    font-size: 1.5rem;
+  }
+
+  .header button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
