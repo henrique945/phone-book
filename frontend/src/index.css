@@ -20,9 +20,10 @@
   --color-primary: black;
   --color-secundary: gray;
   --color-neutral: white;
+  --color-neutral-200: #f6f6f6;
   --color-info: #347bf6;
   --color-success: #4caf50;
-  --color-danger: #f44336;
+  --color-danger: #cb444a;
   --color-warning: #ff9100;
 }
 
