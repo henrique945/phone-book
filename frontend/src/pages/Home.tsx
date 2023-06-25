@@ -1,60 +1,40 @@
 //#region Imports
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiPlusMedical, BiSolidContact } from 'react-icons/bi';
 import ContactItem from '../components/contact-item/ContactItem.tsx';
 import { ContactInterface } from '../models/contact.interface.ts';
+import contactService from '../services/contact/contact.service.ts';
 import './Home.css';
 
 //#endregion
 
 export default function Home() {
-  // TODO: implement real API
-  const initialListContacts: ContactInterface[] = [
-    {
-      id: 1,
-      firstName: 'Eric',
-      lastName: 'Elliot',
-      phone: '222-555-6575',
-    },
-    {
-      id: 2,
-      firstName: 'Steve',
-      lastName: 'Jobs',
-      phone: '222-454-6754',
-    },
-    {
-      id: 3,
-      firstName: 'Fred',
-      lastName: 'Allen',
-      phone: '210-657-9886',
-    },
-    {
-      id: 4,
-      firstName: 'Steve',
-      lastName: 'Wozniak',
-      phone: '343-675-8786',
-    },
-    {
-      id: 5,
-      firstName: 'Bill',
-      lastName: 'Gates',
-      phone: '343-654-9688',
-    },
-  ];
-  const [listContacts, setListContacts] = useState<ContactInterface[]>(initialListContacts);
+  useEffect(() => {
+    const loadContacts = async () => {
+      const contacts = await contactService.getAll();
+      setInitialListContacts(contacts);
+      setListContacts(contacts);
+    };
+
+    loadContacts();
+  }, []);
+
+  const [initialListContacts, setInitialListContacts] = useState<ContactInterface[]>([]);
+  const [listContacts, setListContacts] = useState<ContactInterface[]>([]);
 
   const filterContacts = (event: ChangeEvent<HTMLInputElement>) => {
     const text: string = event.target.value;
 
     if (!text || text === '')
       setListContacts(initialListContacts);
-
-    setListContacts(initialListContacts.filter(contact => contact.lastName.toLowerCase().includes(text.toLowerCase())));
+    else
+      setListContacts(initialListContacts.filter(contact => contact.lastName.toLowerCase().includes(text.toLowerCase())));
   };
 
-  const removeContactItem = (id: number) => {
+  const removeContactItem = async (id: number) => {
+    await contactService.delete(id);
     setListContacts(listContacts.filter(contact => contact.id !== id));
   };
 

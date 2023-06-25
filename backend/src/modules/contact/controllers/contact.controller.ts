@@ -8,7 +8,7 @@ import { ContactService } from '../services/contact.service';
 
 //#endregion
 
-@Controller('category')
+@Controller('contact')
 export class ContactController {
 
   constructor(
