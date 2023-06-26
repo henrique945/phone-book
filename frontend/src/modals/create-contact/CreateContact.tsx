@@ -9,6 +9,7 @@ import './CreateContact.css';
 
 //#endregion
 
+// TODO: adjust for mobile
 export default function CreateContact(modal: ModalInterface) {
   const [body, setBody] = useState<ContactInterface>({
     id: 0,

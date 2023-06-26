@@ -1,6 +1,7 @@
 # Phone Book
 
 ## Installation (using NodeJs 18.x + npm)
+
 - Frontend
   - Run `npm i` inside *frontend* folder
   - And run `npm run dev` to start React with Vite app
@@ -14,6 +15,8 @@
 
 ![](prints/phone-book1.PNG)
 ![](prints/phone-book2.PNG)
+![](prints/phone-book3.PNG)
+![](prints/phone-book4.PNG)
 
 ## Testing
 
@@ -22,15 +25,20 @@
 - Pages/components
   - Home
   - ContactItem
+  - CreateContactModal
+  - EditContactModal
 - Services
   - httpService
   - contactService
 - Models
   - ContactInterface
+  - ModalInterface
+  - EditModalInterface
 
 ## Backend
 
 - Entities
+
 ```typescript
 Contact {
   id: number;
@@ -41,6 +49,7 @@ Contact {
 ```
 
 - Routes
+
 > GET - List contacts - **/contact**
 
 > POST - Create contact - **/contact**
@@ -50,6 +59,7 @@ Contact {
 > DELETE - Delete one contact - **/contact/:id**
 
 ## Technologies
+
 - Frontend: React + Vite (typescript)
 - Backend: NestJs (NodeJs) + Prisma (SQLite)
 

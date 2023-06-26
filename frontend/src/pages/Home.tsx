@@ -43,11 +43,11 @@ export default function Home() {
     setInitialListContacts(contactsFiltered);
   };
 
-  const openModal = () => {
+  const openCreateModal = () => {
     setIsCreateModalOpen(true);
   };
 
-  const closeModal = () => {
+  const closeCreateModal = () => {
     setIsCreateModalOpen(false);
   };
 
@@ -57,9 +57,9 @@ export default function Home() {
     },
     content: {
       width: '50vw',
-      height: '50vh',
+      height: '60vh',
       padding: 0,
-      border: '2px solid var(--color-success)',
+      border: '1px solid var(--color-info)',
       margin: 'auto',
     },
   };
@@ -72,14 +72,14 @@ export default function Home() {
         contentElement={ undefined }
         shouldCloseOnOverlayClick={ true }
       >
-        <CreateContact close={ closeModal }></CreateContact>
+        <CreateContact close={ closeCreateModal }></CreateContact>
       </Modal>
 
       <h1><BiSolidContact/> Phone Book App</h1>
 
       <div className="header">
         <strong>Contacts</strong>
-        <button onClick={ openModal }><BiPlusMedical/> Add Contact</button>
+        <button onClick={ openCreateModal }><BiPlusMedical/> Add Contact</button>
       </div>
 
       <div className="search">
