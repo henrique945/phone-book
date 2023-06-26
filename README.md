@@ -20,7 +20,13 @@
 ## Frontend
 
 - Pages/components
+  - Home
+  - ContactItem
 - Services
+  - httpService
+  - contactService
+- Models
+  - ContactInterface
 
 ## Backend
 

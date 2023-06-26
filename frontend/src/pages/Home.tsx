@@ -3,7 +3,9 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiPlusMedical, BiSolidContact } from 'react-icons/bi';
+import Modal, { Styles } from 'react-modal';
 import ContactItem from '../components/contact-item/ContactItem.tsx';
+import CreateContact from '../modals/create-contact/CreateContact.tsx';
 import { ContactInterface } from '../models/contact.interface.ts';
 import contactService from '../services/contact/contact.service.ts';
 import './Home.css';
@@ -21,6 +23,7 @@ export default function Home() {
     loadContacts();
   }, []);
 
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
   const [initialListContacts, setInitialListContacts] = useState<ContactInterface[]>([]);
   const [listContacts, setListContacts] = useState<ContactInterface[]>([]);
 
@@ -35,16 +38,48 @@ export default function Home() {
 
   const removeContactItem = async (id: number) => {
     await contactService.delete(id);
-    setListContacts(listContacts.filter(contact => contact.id !== id));
+    const contactsFiltered: ContactInterface[] = initialListContacts.filter(contact => contact.id !== id);
+    setListContacts(contactsFiltered);
+    setInitialListContacts(contactsFiltered);
+  };
+
+  const openModal = () => {
+    setIsCreateModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsCreateModalOpen(false);
+  };
+
+  const customStyles: Styles = {
+    overlay: {
+      display: 'flex',
+    },
+    content: {
+      width: '50vw',
+      height: '50vh',
+      padding: 0,
+      border: '2px solid var(--color-success)',
+      margin: 'auto',
+    },
   };
 
   return (
     <div className="home">
+      <Modal
+        isOpen={ isCreateModalOpen }
+        style={ customStyles }
+        contentElement={ undefined }
+        shouldCloseOnOverlayClick={ true }
+      >
+        <CreateContact close={ closeModal }></CreateContact>
+      </Modal>
+
       <h1><BiSolidContact/> Phone Book App</h1>
 
       <div className="header">
         <strong>Contacts</strong>
-        <button><BiPlusMedical/> Add Contact</button>
+        <button onClick={ openModal }><BiPlusMedical/> Add Contact</button>
       </div>
 
       <div className="search">
