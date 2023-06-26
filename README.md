@@ -18,8 +18,6 @@
 ![](prints/phone-book3.PNG)
 ![](prints/phone-book4.PNG)
 
-## Testing
-
 ## Frontend
 
 - Pages/components
